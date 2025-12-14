@@ -127,7 +127,7 @@ function App() {
 
       {appState === 'upload' && !isLoading && (
         <div
-          className="h-screen w-full flex flex-col items-center justify-center p-4 border-8 border-neo-black bg-[url('/bg-pattern.png')]"
+          className="h-screen w-full flex flex-col items-center justify-center p-4 border-8 border-neo-black bg-[radial-gradient(#00000018_1px,transparent_1px)] [background-size:16px_16px]"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
