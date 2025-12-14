@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# AI Stamp Cropper (AI 自動スタンプ切り抜きツール)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+画像をアップロードするだけで、AIが自動的に背景を削除し、複数のオブジェクトを個別のスタンプとして切り抜くWebアプリケーションです。
+すべての処理はブラウザ上で完結し、サーバーに画像をアップロードしないため、プライバシーも安心です。
 
-Currently, two official plugins are available:
+## 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **自動背景削除 & オブジェクト認識**: 最新のAIモデル (RMBG-1.4) をブラウザ上で実行し、高精度に背景を除去します。
+*   **個別スタンプ切り抜き**: 画像内の複数のオブジェクト（人物、アイテムなど）を自動で認識し、個別の画像として分割します。
+*   **一括処理 (Batch Upload)**: 複数の画像を一度にドラッグ＆ドロップし、連続して自動処理できます。
+*   **手動補正ブラシ**: 切り抜きが甘い部分や不要な部分を、ブラシツール（復元/削除）を使って手動で修正できます。
+*   **サイズ変更 & エクスポート**:
+    *   その場での個別ダウンロード (PNG)。
+    *   サイズ指定（幅・高さ）をしてのリサイズ保存。
+    *   全ファイルをまとめてZIP形式でダウンロード。
 
-## React Compiler
+## 技術スタック
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Frontend**: React, Vite, TypeScript
+*   **Styling**: Tailwind CSS (Neo-Brutalism Design)
+*   **AI/ML**: Transformers.js (@xenova/transformers), OpenCV.js
+*   **Deployment**: GitHub Pages (GitHub Actions)
 
-## Expanding the ESLint configuration
+## 使い方
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **画像のアップロード**: 画面中央に画像をドラッグ＆ドロップ（またはファイル選択）します。複数選択も可能です。
+2.  **自動処理**: AIが自動的に背景削除と切り抜きを行います。処理中は可愛い魚のアニメーションが表示されます。
+3.  **編集（任意）**: 結果画面で「鉛筆アイコン」をクリックすると、マスクの微調整ができます。
+4.  **保存**:
+    *   個別の「PNG」ボタンで保存。
+    *   サイズを指定して「RESIZED」ボタンで保存。
+    *   画面右上の「EXPORT ALL (ZIP)」で一括保存。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ローカルでの開発・実行手順
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+リポジトリをクローンして、ローカル環境で実行する方法です。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# リポジトリのクローン
+git clone https://github.com/cervelo874-dev/ai-stamp-cropper.git
+cd ai-stamp-cropper
+
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ブラウザで `http://localhost:5173` (または表示されるURL) にアクセスしてください。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ライセンス
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+MIT License
