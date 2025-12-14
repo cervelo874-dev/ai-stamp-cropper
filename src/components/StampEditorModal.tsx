@@ -315,7 +315,7 @@ export const StampEditorModal = ({ segment, sourceImage, onSave, onClose }: Stam
                 </div>
 
                 {/* Canvas Area */}
-                <div className="flex-1 overflow-auto bg-[url('/transparent-bg.png')] bg-repeat p-8 flex items-center justify-center">
+                <div className="flex-1 overflow-auto bg-[conic-gradient(at_top_left,#ccc_25%,transparent_25%_50%,#ccc_50%_75%,transparent_75%)] [background-size:20px_20px] p-8 flex items-center justify-center">
                     <canvas
                         ref={canvasRef}
                         onMouseDown={() => setIsDrawing(true)}
