@@ -144,7 +144,7 @@ export const ResultGrid = ({ items, onRemove, onEdit, shape }: ResultGridProps) 
                     <motion.div
                         key={item.id}
                         variants={itemAnim}
-                        className="relative group neo-card p-2 flex items-center justify-center bg-[url('/transparent-bg.png')] bg-repeat"
+                        className="relative group neo-card p-2 flex items-center justify-center bg-[conic-gradient(at_top_left,#ccc_25%,transparent_25%_50%,#ccc_50%_75%,transparent_75%)] [background-size:20px_20px]"
                     >
                         {/* Checkerboard background */}
                         <div className="absolute inset-0 -z-10 opacity-20"

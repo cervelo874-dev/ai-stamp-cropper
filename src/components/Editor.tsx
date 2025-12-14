@@ -161,7 +161,7 @@ export const Editor = ({ sourceImages, processedBitmaps, initialSegments, onRese
             {/* Main Workspace */}
             <div className="flex-1 flex flex-col md:flex-row overflow-hidden min-h-0">
                 {/* Left: Canvas Area */}
-                <div className="flex-1 bg-[url('/transparent-bg-dark.png')] relative flex flex-col items-center justify-center overflow-hidden p-8 min-w-0 min-h-0">
+                <div className="flex-1 bg-[conic-gradient(at_top_left,#80808033_25%,transparent_25%_50%,#80808033_50%_75%,transparent_75%)] [background-size:20px_20px] relative flex flex-col items-center justify-center overflow-hidden p-8 min-w-0 min-h-0">
                     {/* Background Pattern CSS */}
                     <div className="absolute inset-0 opacity-10 pointer-events-none"
                         style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}
